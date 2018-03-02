@@ -1,5 +1,7 @@
 # Docker Workshop
 
+![alt text](~/Images/docker.png "Docker")
+
 ## Introduction
 This repository is a guideline to give a workshop on Docker, the goal being to
 introduce **Docker** and explain it's importance on **development environment**
