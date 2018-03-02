@@ -10,6 +10,6 @@ therefore introduce **docker-compose** as a tool to bind an application
 together.
 
 ---
-[Home](~/README.md) :
-[previous](~/Docker/README.md) -
-[next](~/Deployment/README.md)
+[Home](../README.md) :
+[previous](../Docker/README.md) -
+[next](../Deployment/README.md)

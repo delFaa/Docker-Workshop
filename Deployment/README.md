@@ -7,6 +7,6 @@ configure the server since the custom image for the development environment and
 the deployment environment are one and the same.
 
 ---
-[Home](~/README.md) :
-[previous](~/Development/README.md) -
-[next](~/Conclusion/README.md)
+[Home](../README.md) :
+[previous](../Development/README.md) -
+[next](../Conclusion/README.md)

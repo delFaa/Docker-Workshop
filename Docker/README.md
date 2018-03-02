@@ -8,6 +8,6 @@ isolation of containers from the system, their destructibility and their
 flexibility.
 
 ---
-[Home](~/README.md) :
-[previous](~/Presentation/README.md) -
-[next](~/Development/README.md)
+[Home](../README.md) :
+[previous](../Presentation/README.md) -
+[next](../Development/README.md)

@@ -1,6 +1,6 @@
 # Docker Workshop
 
-![alt text](~/Images/docker.png "Docker")
+![alt text](./Images/docker.png "Docker")
 
 ## Introduction
 This repository is a guideline to give a workshop on Docker, the goal being to
