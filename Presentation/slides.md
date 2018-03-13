@@ -19,24 +19,24 @@ fonttheme: "structurebold"
 
 
 # What's Docker?
-![](./Presentation/Images/Docker.jpg)
+![](./Images/Docker.png)
 
 
 # Containers
-![](./Presentation/Images/Container.jpg)
+![](./Images/Container.jpg)
 
 
 # Images
-![](./Presentation/Images/Images.png)
+![](./Images/Images.png)
 
 
 # Dockerfile
-![](./Presentation/Images/Dockerfile.jpg)
+![](./Images/Dockerfile.jpg)
 
 
 # How does it works?
-![](./Presentation/Images/HowItWorks.png)
+![](./Images/HowItWorks.png)
 
 
 # What can you do with it?
-![](./Presentation/Images/HowCanItBeUsed.png)
+![](./Images/HowCanItBeUsed.png)
