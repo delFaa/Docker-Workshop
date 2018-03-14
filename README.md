@@ -20,7 +20,7 @@ stating that this workshop doesn't claim to be 100% accurate nor do I claim to
 be an expert, moreover if you want to help me improve this course you are more
 than welcome to contribute to it.
 
-Link to the Github page: https://Marvin-LOUIS.github.io/Docker-Workshop/
+Link to the Github page: https://marvin-louis.github.io/Docker-Workshop/
 
 
 ## Timetable

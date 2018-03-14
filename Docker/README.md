@@ -60,7 +60,7 @@ Once again the goal is not to give a full course on the syntax of Dockerfile but
 rather the basics, for that a small tutorial as been written in the Github page.
 
 Following this link will guide you to a Dockerfile that can be used as a more
-complex example, [link to the Dockerfile](./Docker/Dockerfile).
+complex example, [link to the Dockerfile](./Dockerfile).
 
 ### Exercises
 The exercices that follow are example of what could be given to the attendees
