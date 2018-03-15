@@ -8,12 +8,13 @@ introduce **Docker** and explain it's importance on **development environment**
 and **deployment**. As said, this repository as been written to aid the person
 giving the workshop, the purpose for the attendees being to grasp the reason of
 Docker success and understand how it simplify the development process as well
-as the deployment of any, small or big, application. To aid the attendees a
-Github page has been created to guide them through the workshop.
+as the deployment of any, small or big, application. 
 
-To do all this, resources such as exercises, examples and small tutorial have
-been put together in this repository. If you don't know Docker, these resources
-can also be used for self-learning.
+To do all this, resources such as exercises, examples and **guidelines** have
+been put together in this repository. Furthermore, to aid the attendees a Github
+page has been created to guide them through the workshop with small tutorial and 
+explanation. If you don't know Docker, these resources can also be used as 
+self-learning tools.
 
 Small disclaimer, as we live in a dangerous world, I will protect myself by
 stating that this workshop doesn't claim to be 100% accurate nor do I claim to

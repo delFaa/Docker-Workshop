@@ -6,8 +6,86 @@
   </head>
 
   <body>
+    <!-- Top bar -->
     <header>
-      <h1>Docker Workshop</>
+      <h1>Docker Workshop</h1>
     </header>
+
+    <!-- Navigation menu -->
+    <nav>
+      <h2>Table of contents</h2>
+      <ul>
+        <li><a href="#Docker">Docker</a></li>
+        <ul>
+          <li><a href="#Install">Installation</a></li>
+          <ul>
+            <li><a href="#Linux">Linux</a></li>
+            <li><a href="#Windows">Windows</a></li>
+            <li><a href="#MacOS">MacOS</a></li>
+          </ul>
+          <li><a href="#Commands">Commands</a></li>
+          <li><a href="#DockerfileDocker">Dockerfile: part one</a></li>
+          <li><a href="#ExoDocker">Exercises</a></li>
+        </ul>
+        <li><a href="#Development">Development</a></li>
+        <ul>
+          <li><a href="#DockerfileDev">Dockerfile: part two</a></li>
+          <ul><li><a href="#ExoDockerfile">Exercises</a></li></ul>
+          <li><a href="#DockerCompose">Docker-Compose</a></li>
+          <ul><li><a href="#ExoDockerCompose">Exercises</a></li></ul>
+        </ul>
+        <li><a href="#Deployment">Deployment</a></li>
+        <ul>
+          <li><a href="#Deploy">Deploy</a></li>
+          <ul>
+            <li><a href="#Servers">Servers</a></li>
+            <li><a href="#Services">Services</a></li>
+          </ul>
+          <li><a href="#ExoDeploy">Exercises</a></li>
+        </ul>
+      </ul>
+    </nav>
+
+    <!-- Content of the website -->
+    <section>
+      <!-- First part of the workshop  -->
+      <h2 id="Docker">Docker</h2>
+      <h3 id="Install">Installation</h3>
+      <p>In this section we will learn how to install docker on all the major
+      operating system.</p>
+      <h4 id="Linux">Linux</h4>
+      <p>On a linux distribution Docker is as simple to install as using your
+      package manager.</p>
+      <ul>
+        <li><strong>Ubuntu</strong>: <code>sudo apt-get install docker</code></li>
+        <li><strong>Archlinux</strong>: <code>sudo pacman -S docker</code></li>
+      </ul>
+      <p>You could also install Docker manually, refer to the website for more info.</p>
+      <h4 id="Windows">Windows</h4>
+      <p>For windows, you can find the Docker community edition by following this
+      link and the instruction to install.</p>
+      <a href="https://store.docker.com/editions/community/docker-ce-desktop-windows">Download</a>
+      <h4 id="MacOS">MacOS</h4>
+      <p>For Mac, you can find the Docker community edition by following this
+      link and the instruction to install.</p>
+      <a href="https://store.docker.com/editions/community/docker-ce-desktop-mac">Download</a>
+      <h3 id="Commands">Commands</h3>
+      <h3 id="DockerfileDocker">Dockerfile: part one</h3>
+      <h3 id="ExoDocker">Exercises</h3>
+
+      <!-- Second part of the workshop -->
+      <h2 id="Development">Development</h2>
+      <h3 id="DockerfileDev">Dockerfile: part two</h3>
+      <h4 id="ExoDockerfile">Exercises</h4>
+      <h3 id="DockerCompose">Docker-Compose</h3>
+      <h4 id="ExoDockerCompose">Exercises</h4>
+
+      <!-- Third part of the workshop -->
+      <h2 id="Deployment">Deployment</h2>
+      <h3 id="Deploy">Deploy</h3>
+      <h4 id="Servers">Servers</h4>
+      <h4 id="Services">Services</h4>
+      <h3 id="ExoDeploy">Exercises</h3>
+    </section>
   </body>
 </html>

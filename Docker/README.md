@@ -10,16 +10,15 @@ flexibility.
 ## Plan
 The plan for the initiation to Docker is to first install Docker, learn the 
 basic commands, play with a container and create a Dockerfile. To achieve all
-that the attendees should follow the Github page to guide them. The goal for the
-course is to be as interactive and personal as possible.
+that the attendees should follow the Github page to guide them. The goal for
+this part is to be as interactive and personal as possible.
 
 
-## Resources
-The resources for this part are a tutorial on how to install Docker, a list of
-the basic commands, some exercises and an example of a Dockerfile.
+## Installation
+The install is the time to setup the machines all the participants for Docker
+use. All the detail can be found on the install section of the Github page.
 
-### Installation
-#### Linux
+### Linux
 On a linux distribution Docker is as simple to install as using your package
 manager:
   * **Ubuntu** : `sudo apt-get install docker`
@@ -27,23 +26,23 @@ manager:
 
 You could also install Docker manually, refer to the website for more info.
 
-#### Windows
+### Windows
 For windows, you can find the Docker community edition by following this link
 and the instruction to install,
 [download](https://store.docker.com/editions/community/docker-ce-desktop-windows).
 
-#### Mac OS
+### Mac OS
 For Mac, you can find the Docker community edition by following this link and
 the instruction to install,
 [download](https://store.docker.com/editions/community/docker-ce-desktop-mac).
 
-### Commands
+
+## Commands
 The commands displayed in the table below are the very basics that should be
 explained, during this part of the workshop the attendees should probably not
 play with more complex features, it will be discussed during the development
-part. More in details descriptions will be given in the Github page, but the
-attendees should be pushed towards the manual to research the full power of the
-commands.
+part. The attendees should be pushed towards the manual to research the full
+power of the commands.
 
 | **Commands** | **Descriptions**                                  |
 |:------------:|:--------------------------------------------------|
@@ -55,15 +54,15 @@ commands.
 | *rm*         | Remove a container from your system               |
 | *rmi*        | Remove an image from your system                  |
 
-### Dockerfile
-Once again the goal is not to give a full course on the syntax of Dockerfile but
-rather the basics, for that a small tutorial as been written in the Github page.
 
-Following this link will guide you to a Dockerfile that can be used as a more
-complex example, [link to the Dockerfile](./Dockerfile).
+## Dockerfile
+The goal, during this part, is not to give a full course on Dockerfile but
+rather the very basics in order for the attendees to have a first encounter with
+the customisation of images before we go further in the development part.
 
-### Exercises
-The exercices that follow are example of what could be given to the attendees
+
+## Exercises
+The exercices that follow are examples of what could be given to the attendees
 for them to practice and learn by mistakes and research.
 
 ```bash
@@ -94,7 +93,13 @@ docker rmi NameOrIdImage
 
 ## Create, build and run a custom image with a Dockerfile based on "busybox" and
 ## make it output the sentence "I created my first custom image"
-docker build -t MyImage .
+docker build -t myimage . && docker run MyImage
+```
+
+```
+## Dockerfile from the last command exercise
+FROM busybox
+CMD echo "I created my first custom image"
 ```
 
 ---
