@@ -36,6 +36,26 @@ not matter what you use as long as you give an example.
 
 ## Exercises
 
+```
+## Deploy your app on a server or local machine.
+
+```
+
+```
+
+```
+
+
+## Play time
+The attendees should have finished the exercises a while before the deployment
+part. In fact, if they haven't finished it before half an hour you should let
+them start and play around. The goal is for them to create their own environment
+of development for the technology they want as they will need it during the next
+part.
+
+The attendees that are done first should help the others as it's not always easy
+to customize an environment.
+
 ---
 [Home](../README.md) :
 [previous](../Development/README.md) -

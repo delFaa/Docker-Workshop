@@ -57,8 +57,8 @@
       <p>On a linux distribution Docker is as simple to install as using your
       package manager.</p>
       <ul>
-        <li><strong>Ubuntu</strong>: <code>sudo apt-get install docker</code></li>
-        <li><strong>Archlinux</strong>: <code>sudo pacman -S docker</code></li>
+        <li><b>Ubuntu</b>: <pre><code>sudo apt-get install docker</code></pre></li>
+        <li><b>Archlinux</b>: <pre><code>sudo pacman -S docker</code></pre></li>
       </ul>
       <p>You could also install Docker manually, refer to the website for more info.</p>
       <h4 id="Windows">Windows</h4>
@@ -70,8 +70,67 @@
       link and the instruction to install.</p>
       <a href="https://store.docker.com/editions/community/docker-ce-desktop-mac">Download</a>
       <h3 id="Commands">Commands</h3>
+      <table>
+        <tr>
+          <th><b>Commands</b></th>
+          <th><b>Descriptions</b></th> 
+        </tr>
+        <tr>
+          <td><i>pull</i></td>
+          <td>Pull an image on your local machine</td>
+        </tr>
+        <tr>
+          <td><i>run</i></td>
+          <td>Pull and run an image on your local machine</td>
+        </tr>
+        <tr>
+          <td><i>build</i></td>
+          <td>Create an image from a Dockerfile</td>
+        </tr>
+        <tr>
+          <td><i>ps</i></td>
+          <td>List the containers on you system and their infos</td>
+        </tr>
+        <tr>
+          <td><i>images</i></td>
+          <td>List the images on your system and their infos</td>
+        </tr>
+        <tr>
+          <td><i>rm</i></td>
+          <td>Remove a container from your system</td>
+        </tr>
+        <tr>
+          <td><i>rmi</i></td>
+          <td>Remove an image from your system</td>
+        </tr>
+      </table>     
       <h3 id="DockerfileDocker">Dockerfile: part one</h3>
       <h3 id="ExoDocker">Exercises</h3>
+      <ol>
+        <li><p>Pull the image "busybox"</p></li>
+        <pre><code>docker pull busybox</code></pre>
+        <li><p>List the existing image(s)</p></li>
+        <pre><code>docker images</code></pre>
+        <li><p>Run the image "hello-world"</p></li>
+        <pre><code>docker run hello-world</code></pre>
+        <li><p>List all the existing container(s)</p></li>
+        <pre><code>docker ps -a</code></pre>
+        <li><p>Run a container "busybox" with an interactive terminal</p></li>
+        <pre><code>docker run -it busybox</code></pre>
+        <li><p>Run a container "busybox" with an interactive terminal and the current
+        directory as mounted volume inside the "test" directory of the container</p></li>
+        <pre><code>docker run -it -v $PWD:/test busybox</code></pre>
+        <li><p>Remove the existing container(s)</p></li>
+        <pre><code>docker rm NameOrIdContainer</code></pre>
+        <li><p>Remove the existing image(s)</p></li>
+        <pre><code>docker rmi NameOrIdImage</code></pre>
+        <li><p>Create, build and run a custom image with a Dockerfile based on "busybox"
+        and make it output the sentence "I created my first custom image"</p></li>
+        <h5>Commands</h5>
+        <pre><code>docker build -t myimage .<br>docker run myimage</code></pre>
+        <h5>Dockerfile</h5>
+        <pre><code>FROM busybox<br>CMD echo "I created my first custom image"</code></pre>
+      </ol>
 
       <!-- Second part of the workshop -->
       <h2 id="Development">Development</h2>

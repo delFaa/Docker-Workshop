@@ -43,6 +43,11 @@ separation of the different service in an application.
 
 ```
 
+
+## Play time
+Not that the workshop is almost finished, you should let the quickest of the
+attendees explore the more complex side of Docker.
+
 ---
 [Home](../README.md) :
 [previous](../Docker/README.md) -

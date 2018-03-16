@@ -15,11 +15,9 @@ been gathered in the resources section. If any problem have been found an issue
 should be created in the hope of improving the workshop.
 
 
-## Resources
-The only resource for the conclusion is a list of potential questions to start
-the debate if nobody knows what to say.
-
 ### Questions
+There is a list of potential questions to start the debate if nobody knows what
+to say.
   * Was the workshop a good and enjoyable experience?
   * Do you feel confident with your new knowledge to explore Docker further?
   * What part of the workshop would you change or improve?

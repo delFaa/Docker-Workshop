@@ -16,25 +16,7 @@ this part is to be as interactive and personal as possible.
 
 ## Installation
 The install is the time to setup the machines all the participants for Docker
-use. All the detail can be found on the install section of the Github page.
-
-### Linux
-On a linux distribution Docker is as simple to install as using your package
-manager:
-  * **Ubuntu** : `sudo apt-get install docker`
-  * **Archlinux** : `sudo pacman -S docker`
-
-You could also install Docker manually, refer to the website for more info.
-
-### Windows
-For windows, you can find the Docker community edition by following this link
-and the instruction to install,
-[download](https://store.docker.com/editions/community/docker-ce-desktop-windows).
-
-### Mac OS
-For Mac, you can find the Docker community edition by following this link and
-the instruction to install,
-[download](https://store.docker.com/editions/community/docker-ce-desktop-mac).
+use. All the details can be found on the install section of the Github page.
 
 
 ## Commands
@@ -88,12 +70,12 @@ docker run -it -v $PWD:/test busybox
 ## Remove the existing container(s)
 docker rm NameOrIdContainer
 
-## Remove the existing images(s)
+## Remove the existing image(s)
 docker rmi NameOrIdImage
 
 ## Create, build and run a custom image with a Dockerfile based on "busybox" and
 ## make it output the sentence "I created my first custom image"
-docker build -t myimage . && docker run MyImage
+docker build -t myimage . && docker run myimage
 ```
 
 ```
@@ -101,6 +83,12 @@ docker build -t myimage . && docker run MyImage
 FROM busybox
 CMD echo "I created my first custom image"
 ```
+
+
+## Play time
+If the attendees have finished the exercises before the end of this part they
+should be left to play with what they've acquired and explore the development
+part in advance.
 
 ---
 [Home](../README.md) :
