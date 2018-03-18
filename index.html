@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Docker-Workshop</title>
+    <link rel="stylesheet" href="./Code/index.css"/>
   </head>
 
   <body>
@@ -13,138 +14,312 @@
 
     <!-- Navigation menu -->
     <nav>
-      <h2>Table of contents</h2>
-      <ul>
-        <li><a href="#Docker">Docker</a></li>
+      <div id="Ncontent">
+        <h2>Table of contents</h2>
         <ul>
-          <li><a href="#Install">Installation</a></li>
+          <li><a href="#Intro">Introduction</a></li>
+          <li><a href="#Docker">Docker</a></li>
           <ul>
-            <li><a href="#Linux">Linux</a></li>
-            <li><a href="#Windows">Windows</a></li>
-            <li><a href="#MacOS">MacOS</a></li>
+            <li><a href="#Install">Installation</a></li>
+            <ul>
+              <li><a href="#Linux">Linux</a></li>
+              <li><a href="#Windows">Windows</a></li>
+              <li><a href="#MacOS">MacOS</a></li>
+            </ul>
+            <li><a href="#Commands">Commands</a></li>
+            <li><a href="#DockerfileDocker">Dockerfile: part one</a></li>
+            <li><a href="#ExoDocker">Exercises</a></li>
           </ul>
-          <li><a href="#Commands">Commands</a></li>
-          <li><a href="#DockerfileDocker">Dockerfile: part one</a></li>
-          <li><a href="#ExoDocker">Exercises</a></li>
-        </ul>
-        <li><a href="#Development">Development</a></li>
-        <ul>
-          <li><a href="#DockerfileDev">Dockerfile: part two</a></li>
-          <ul><li><a href="#ExoDockerfile">Exercises</a></li></ul>
-          <li><a href="#DockerCompose">Docker-Compose</a></li>
-          <ul><li><a href="#ExoDockerCompose">Exercises</a></li></ul>
-        </ul>
-        <li><a href="#Deployment">Deployment</a></li>
-        <ul>
-          <li><a href="#Deploy">Deploy</a></li>
+          <li><a href="#Development">Development</a></li>
           <ul>
-            <li><a href="#Servers">Servers</a></li>
-            <li><a href="#Services">Services</a></li>
+            <li><a href="#DockerfileDev">Dockerfile: part two</a></li>
+            <ul><li><a href="#ExoDockerfile">Exercises</a></li></ul>
+            <li><a href="#DockerCompose">Docker-Compose</a></li>
+            <ul><li><a href="#ExoDockerCompose">Exercises</a></li></ul>
           </ul>
-          <li><a href="#ExoDeploy">Exercises</a></li>
+          <li><a href="#Deployment">Deployment</a></li>
+          <ul>
+            <li><a href="#Deploy">Deploy</a></li>
+            <ul>
+              <li><a href="#Servers">Servers</a></li>
+              <li><a href="#Services">Services</a></li>
+            </ul>
+            <li><a href="#ExoDeploy">Exercises</a></li>
+          </ul>
+          <li><a href="#Conclu">Conclusion</a></li>
         </ul>
-      </ul>
+      </div>
     </nav>
 
     <!-- Content of the website -->
     <section>
-      <!-- First part of the workshop  -->
-      <h2 id="Docker">Docker</h2>
-      <h3 id="Install">Installation</h3>
-      <p>In this section we will learn how to install docker on all the major
-      operating system.</p>
-      <h4 id="Linux">Linux</h4>
-      <p>On a linux distribution Docker is as simple to install as using your
-      package manager.</p>
-      <ul>
-        <li><b>Ubuntu</b>: <pre><code>sudo apt-get install docker</code></pre></li>
-        <li><b>Archlinux</b>: <pre><code>sudo pacman -S docker</code></pre></li>
-      </ul>
-      <p>You could also install Docker manually, refer to the website for more info.</p>
-      <h4 id="Windows">Windows</h4>
-      <p>For windows, you can find the Docker community edition by following this
-      link and the instruction to install.</p>
-      <a href="https://store.docker.com/editions/community/docker-ce-desktop-windows">Download</a>
-      <h4 id="MacOS">MacOS</h4>
-      <p>For Mac, you can find the Docker community edition by following this
-      link and the instruction to install.</p>
-      <a href="https://store.docker.com/editions/community/docker-ce-desktop-mac">Download</a>
-      <h3 id="Commands">Commands</h3>
-      <table>
-        <tr>
-          <th><b>Commands</b></th>
-          <th><b>Descriptions</b></th> 
-        </tr>
-        <tr>
-          <td><i>pull</i></td>
-          <td>Pull an image on your local machine</td>
-        </tr>
-        <tr>
-          <td><i>run</i></td>
-          <td>Pull and run an image on your local machine</td>
-        </tr>
-        <tr>
-          <td><i>build</i></td>
-          <td>Create an image from a Dockerfile</td>
-        </tr>
-        <tr>
-          <td><i>ps</i></td>
-          <td>List the containers on you system and their infos</td>
-        </tr>
-        <tr>
-          <td><i>images</i></td>
-          <td>List the images on your system and their infos</td>
-        </tr>
-        <tr>
-          <td><i>rm</i></td>
-          <td>Remove a container from your system</td>
-        </tr>
-        <tr>
-          <td><i>rmi</i></td>
-          <td>Remove an image from your system</td>
-        </tr>
-      </table>     
-      <h3 id="DockerfileDocker">Dockerfile: part one</h3>
-      <h3 id="ExoDocker">Exercises</h3>
-      <ol>
-        <li><p>Pull the image "busybox"</p></li>
-        <pre><code>docker pull busybox</code></pre>
-        <li><p>List the existing image(s)</p></li>
-        <pre><code>docker images</code></pre>
-        <li><p>Run the image "hello-world"</p></li>
-        <pre><code>docker run hello-world</code></pre>
-        <li><p>List all the existing container(s)</p></li>
-        <pre><code>docker ps -a</code></pre>
-        <li><p>Run a container "busybox" with an interactive terminal</p></li>
-        <pre><code>docker run -it busybox</code></pre>
-        <li><p>Run a container "busybox" with an interactive terminal and the current
-        directory as mounted volume inside the "test" directory of the container</p></li>
-        <pre><code>docker run -it -v $PWD:/test busybox</code></pre>
-        <li><p>Remove the existing container(s)</p></li>
-        <pre><code>docker rm NameOrIdContainer</code></pre>
-        <li><p>Remove the existing image(s)</p></li>
-        <pre><code>docker rmi NameOrIdImage</code></pre>
-        <li><p>Create, build and run a custom image with a Dockerfile based on "busybox"
-        and make it output the sentence "I created my first custom image"</p></li>
-        <h5>Commands</h5>
-        <pre><code>docker build -t myimage .<br>docker run myimage</code></pre>
-        <h5>Dockerfile</h5>
-        <pre><code>FROM busybox<br>CMD echo "I created my first custom image"</code></pre>
-      </ol>
+      <div id="Scontent">
+        <h2 id="Intro">Introduction</h2>
+        <p>Welcome to this introduction to the world of Docker, if you want to learn
+        a new technology, discover a DevOps tool or understand how you can make your
+        life as a developer or system administrator easier, then look no further!</p>
+        <p>You might not become expert at the end of the day, but you will have gathered
+        enough knowledge to improve skills and set of tools. Furthermore, you will know
+        how to use Docker, create your own container, make a custom development environment
+        and deploy very easily with Docker.</p>
+        <p>Notice that this Github page is nothing more than a guide to help you through
+        the learning process. I take the stance that to learn you need to exercise but
+        even more importantly research. As such you won't be given every piece of info
+        on the technology but the very basics and you will be advised to go to the doc or
+        ask questions to have a deeper understanding and finish this workshop with success.</p>
+        <!-- First part of the workshop  -->
+        <h2 id="Docker">Docker</h2>
+        During the next hour or so you will learn the very basics of Docker commands
+        and Dockerfile. With the help of which you'll be ready to face your first
+        challenge, being able to create a simple container.
+        <h3 id="Install">Installation</h3>
+        <p>Before anything we will have to install docker and configure it for the
+        first time. Sadly and as is often the case in computer science, there is
+        no one way to install for all the operating system, but don't dispear it's
+        an easy process noneless.</p>
+        <h4 id="Linux">Linux</h4>
+        <p>On a linux distribution Docker is as simple to install as using your
+        package manager.</p>
+        <ul>
+          <li><b>Ubuntu</b>: <code>sudo apt-get install docker</code></li>
+          <li><b>Archlinux</b>: <code>sudo pacman -S docker</code></li>
+        </ul>
+        <p>You could also install Docker manually, refer to the website for more info.</p>
+        <h4 id="Windows">Windows</h4>
+        <p>For windows, you can find the Docker community edition by following this
+        link and the instruction to install.</p>
+        <a href="https://store.docker.com/editions/community/docker-ce-desktop-windows">Download</a>
+        <h4 id="MacOS">MacOS</h4>
+        <p>For Mac, you can find the Docker community edition by following this
+        link and the instruction to install.</p>
+        <a href="https://store.docker.com/editions/community/docker-ce-desktop-mac">Download</a>
+        <h3 id="Commands">Commands</h3>
+        <p>Docker can be controlled with a plethora of commands in the terminal.
+        These commands can vary from helping you run, create, analyze and much more.
+        Yet if you wanted to learn all of them it would take you more than a day 
+        no doubt, which is why, in the table below, you will found a selection
+        of the most important ones as well as a small description.</p>
+        <table>
+          <tr>
+            <th><b>Commands</b></th>
+            <th><b>Descriptions</b></th> 
+          </tr>
+          <tr>
+            <td><i>pull</i></td>
+            <td>Pull an image on your local machine</td>
+          </tr>
+          <tr>
+            <td><i>run</i></td>
+            <td>Pull and run an image on your local machine</td>
+          </tr>
+          <tr>
+            <td><i>build</i></td>
+            <td>Create an image from a Dockerfile</td>
+          </tr>
+          <tr>
+            <td><i>ps</i></td>
+            <td>List the containers on you system and their infos</td>
+          </tr>
+          <tr>
+            <td><i>images</i></td>
+            <td>List the images on your system and their infos</td>
+          </tr>
+          <tr>
+            <td><i>rm</i></td>
+            <td>Remove a container from your system</td>
+          </tr>
+          <tr>
+            <td><i>rmi</i></td>
+            <td>Remove an image from your system</td>
+          </tr>
+        </table>
+        <p>As said before there are more commands associated with Docker but if
+        you understand the ones above you're already set for a good start. However,
+        for more info, you can use <kbd>man docker command</kbd> on any unix
+        system or follow this link to some 
+        <a href="https://docs.docker.com/engine/reference/commandline/cli/">documentation</a>.</p>
+        <h3 id="DockerfileDocker">Dockerfile: part one</h3>
+        <p>A Dockerfile is very much like a script, you just have to indicate what
+        step you want your image to go throw before it is created.</p>
+        <p>Let's say you want a container with Ubuntu and a couple of packages already
+        installed, plus you want it to execute a couple of commands automatically
+        for you. Let's look at an example:</p>
+        <pre><code>
+          From ubuntu 
 
-      <!-- Second part of the workshop -->
-      <h2 id="Development">Development</h2>
-      <h3 id="DockerfileDev">Dockerfile: part two</h3>
-      <h4 id="ExoDockerfile">Exercises</h4>
-      <h3 id="DockerCompose">Docker-Compose</h3>
-      <h4 id="ExoDockerCompose">Exercises</h4>
+          RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
+          RUN apt-get update
+          RUN apt-get upgrade -y
 
-      <!-- Third part of the workshop -->
-      <h2 id="Deployment">Deployment</h2>
-      <h3 id="Deploy">Deploy</h3>
-      <h4 id="Servers">Servers</h4>
-      <h4 id="Services">Services</h4>
-      <h3 id="ExoDeploy">Exercises</h3>
+          CMD echo "Hello world, I'm up to date."
+        </code></pre>
+        <p>This example can be decomposed as such, the first command of each line
+        is part of the Dockerfile syntax followed by instruction in regard to that
+        command. The said instruction in the example above are: the canvas of our
+        image (FROM) of which you can have multiple, bash commands to execute
+        either during the creation of the container (RUN) or after it's creation (CMD)</p>
+        <p>During this first part on Dockerfile we wont go much further as we shall
+        see more complex features during the second part, but for more info here
+        is a link to some 
+        <a href="https://docs.docker.com/engine/reference/builder">documentation</a>.</p>
+        <h3 id="ExoDocker">Exercises</h3>
+        <p>The best way to learn being to practice hero comes some exercises to put
+        yourself to the test.</p>
+        <ol>
+          <li><p>Pull the image "busybox"</p></li>
+          <code>docker pull busybox</code>
+          <li><p>List the existing image(s)</p></li>
+          <code>docker images</code>
+          <li><p>Run the image "hello-world"</p></li>
+          <code>docker run hello-world</code>
+          <li><p>List all the existing container(s)</p></li>
+          <code>docker ps -a</code>
+          <li><p>Run a container "busybox" with an interactive terminal</p></li>
+          <code>docker run -it busybox</code>
+          <li><p>Run a container "busybox" with an interactive terminal and the current
+          directory as mounted volume inside the "test" directory of the container</p></li>
+          <code>docker run -it -v $PWD:/test busybox</code>
+          <li><p>Remove the existing container(s)</p></li>
+          <code>docker rm NameOrIdContainer</code>
+          <li><p>Remove the existing image(s)</p></li>
+          <code>docker rmi NameOrIdImage</code>
+          <li><p>Create, build and run a custom image with a Dockerfile based on "busybox"
+          and make it output the sentence "I created my first custom image"</p></li>
+          <h5>Commands</h5>
+          <code>docker build -t myimage .<br>docker run myimage</code>
+          <h5>Dockerfile</h5>
+          <code>FROM busybox<br>CMD echo "I created my first custom image"</code>
+        </ol>
+        <p>If you finished all the exercises before the time is up, you should either
+        help others or improve your skills with what you learned so far.</p>
+
+        <!-- Second part of the workshop -->
+        <h2 id="Development">Development</h2>
+        <h3 id="DockerfileDev">Dockerfile: part two</h3>
+        <p>Now that you are a little more experienced with Dockerfile we will sink
+        deeper into the rabbit hole. You can tweaks a lot of things with the help of
+        the Docker syntax, the files you want to use, the port on which your container
+        is listening, etc ... So during this part we will explore some of these
+        advance features by first looking at an example:</p>
+        <pre><code></code></pre>
+        <p></p>
+        <table>
+          <tr>
+            <th><b>Dockerfile element</b></th>
+            <th><b>Descriptions</b></th> 
+          </tr>
+          <tr>
+            <td><i>FROM</i></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><i>RUN</i></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><i>CMD</i></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><i>WORKDIR</i></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><i>ADD</i></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><i>EXPOSE</i></td>
+            <td></td>
+          </tr>
+        </table>
+        <p>As always you can go further so, for more info a link to some documentation on 
+        <a href="https://docs.docker.com/engine/reference/builder">Dockerfile</a>.</p>
+        <h4 id="ExoDockerfile">Exercises</h4>
+        <ol>
+          <li><p></p></li>
+          <li><p></p></li>
+          <li><p></p></li>
+          <li><p></p></li>
+          <li><p></p></li>
+        </ol>
+        <h3 id="DockerCompose">Docker-Compose</h3>
+        <p>Dockerfile are a very handy tool but that doesn't help you a lot when
+        it comes to having simple container working together. As one of the core
+        concept of Docker is to have one container per service for ease of comprehension, 
+        modification and management.</p>
+        <p>In that optic, we shall learn about Docker-compose, a tool created to put
+        in relation multiple container by building them through a special configuration
+        file. You will soon come to realise that a big part of the things you did in
+        your Dockerfile will be done into a Dockercompose file now, but that in no way
+        means you are done with them. For a better understanding, here comes an example:</p>
+        <pre><code></code></pre>
+        <p></p>
+        <table>
+          <tr>
+            <th><b>Docker-compose element</b></th>
+            <th><b>Descriptions</b></th> 
+          </tr>
+          <tr>
+            <td><i>version</i></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><i>volumes</i></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><i>services</i></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><i>image</i></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><i>ports</i></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><i>expose</i></td>
+            <td></td>
+          </tr>
+        </table>
+        <p>For more info a link to some documentation on 
+        <a href="https://docs.docker.com/compose/compose-file/">Docker-Compose</a>.</p>
+        <h4 id="ExoDockerCompose">Exercises</h4>
+        <ol>
+          <li><p></p></li>
+          <li><p></p></li>
+          <li><p></p></li>
+          <li><p></p></li>
+          <li><p></p></li>
+        </ol>
+
+        <!-- Third part of the workshop -->
+        <h2 id="Deployment">Deployment</h2>
+        <p>There are many ways to deploy an application that as been developed with
+        a Docker environment, but we will only see two of them here. The goal being
+        to understand how easy it makes deployment process to have the same environment
+        to develop and deploy.</p>
+        <h3 id="Deploy">Deploy</h3>
+        <h4 id="Servers">Servers</h4>
+        <p>To deploy on a server or local machine manually you must install Docker
+        and run the application as you would on your local machine.</p>
+        <h4 id="Services">Services</h4>
+        <p>To deploy with a service such as Heroku you must simply feed it your
+        images.</p>
+        <h3 id="ExoDeploy">Exercises</h3>
+        <ol>
+          <li><p></p></li>
+          <li><p></p></li>
+          <li><p></p></li>
+          <li><p></p></li>
+          <li><p></p></li>
+        </ol>
+
+        <h2 id="Conclu">Conclusion</h2>
+      </div>
     </section>
   </body>
 </html>
