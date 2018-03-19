@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Docker-Workshop</title>
-    <link rel="stylesheet" href="./Code/index.css"/>
+    <link rel="stylesheet" href="./index.css"/>
   </head>
 
   <body>
@@ -40,10 +40,7 @@
           <li><a href="#Deployment">Deployment</a></li>
           <ul>
             <li><a href="#Deploy">Deploy</a></li>
-            <ul>
-              <li><a href="#Servers">Servers</a></li>
-              <li><a href="#Services">Services</a></li>
-            </ul>
+            <li><a href="#Servers">Servers</a></li>
             <li><a href="#ExoDeploy">Exercises</a></li>
           </ul>
           <li><a href="#Conclu">Conclusion</a></li>
@@ -59,7 +56,7 @@
         a new technology, discover a DevOps tool or understand how you can make your
         life as a developer or system administrator easier, then look no further!</p>
         <p>You might not become expert at the end of the day, but you will have gathered
-        enough knowledge to improve skills and set of tools. Furthermore, you will know
+        enough knowledge to improve your skills and set of tools. Furthermore, you will know
         how to use Docker, create your own container, make a custom development environment
         and deploy very easily with Docker.</p>
         <p>Notice that this Github page is nothing more than a guide to help you through
@@ -81,8 +78,10 @@
         <p>On a linux distribution Docker is as simple to install as using your
         package manager.</p>
         <ul>
-          <li><b>Ubuntu</b>: <code>sudo apt-get install docker</code></li>
-          <li><b>Archlinux</b>: <code>sudo pacman -S docker</code></li>
+          <li><b>Ubuntu</b>:</li>
+          <pre><code>sudo apt-get install docker</code></pre>
+          <li><b>Archlinux</b>:</li>
+          <pre><code>sudo pacman -S docker</code></pre>
         </ul>
         <p>You could also install Docker manually, refer to the website for more info.</p>
         <h4 id="Windows">Windows</h4>
@@ -96,7 +95,7 @@
         <h3 id="Commands">Commands</h3>
         <p>Docker can be controlled with a plethora of commands in the terminal.
         These commands can vary from helping you run, create, analyze and much more.
-        Yet if you wanted to learn all of them it would take you more than a day 
+        Yet, if you wanted to learn all of them it would take you more than a day 
         no doubt, which is why, in the table below, you will found a selection
         of the most important ones as well as a small description.</p>
         <table>
@@ -142,7 +141,7 @@
         <p>A Dockerfile is very much like a script, you just have to indicate what
         step you want your image to go throw before it is created.</p>
         <p>Let's say you want a container with Ubuntu and a couple of packages already
-        installed, plus you want it to execute a couple of commands automatically
+        installed, plus you want it to execute a bunch of commands automatically
         for you. Let's look at an example:</p>
         <pre><code>
           From ubuntu 
@@ -155,10 +154,12 @@
         </code></pre>
         <p>This example can be decomposed as such, the first command of each line
         is part of the Dockerfile syntax followed by instruction in regard to that
-        command. The said instruction in the example above are: the canvas of our
+        command. The said instruction, in the example above, are: the canvas of our
         image (FROM) of which you can have multiple, bash commands to execute
-        either during the creation of the container (RUN) or after it's creation (CMD)</p>
-        <p>During this first part on Dockerfile we wont go much further as we shall
+        during the creation of the container (RUN) or after it's creation (CMD). Note that
+        you can only use "CMD" once per Dockerfile as it's set the entrypoint with an executable
+        or a default application, like bash.</p>
+        <p>During this first part on Dockerfile we won't go much further as we shall
         see more complex features during the second part, but for more info here
         is a link to some 
         <a href="https://docs.docker.com/engine/reference/builder">documentation</a>.</p>
@@ -167,42 +168,54 @@
         yourself to the test.</p>
         <ol>
           <li><p>Pull the image "busybox"</p></li>
-          <code>docker pull busybox</code>
           <li><p>List the existing image(s)</p></li>
-          <code>docker images</code>
           <li><p>Run the image "hello-world"</p></li>
-          <code>docker run hello-world</code>
           <li><p>List all the existing container(s)</p></li>
-          <code>docker ps -a</code>
           <li><p>Run a container "busybox" with an interactive terminal</p></li>
-          <code>docker run -it busybox</code>
           <li><p>Run a container "busybox" with an interactive terminal and the current
           directory as mounted volume inside the "test" directory of the container</p></li>
-          <code>docker run -it -v $PWD:/test busybox</code>
           <li><p>Remove the existing container(s)</p></li>
-          <code>docker rm NameOrIdContainer</code>
           <li><p>Remove the existing image(s)</p></li>
-          <code>docker rmi NameOrIdImage</code>
           <li><p>Create, build and run a custom image with a Dockerfile based on "busybox"
           and make it output the sentence "I created my first custom image"</p></li>
-          <h5>Commands</h5>
-          <code>docker build -t myimage .<br>docker run myimage</code>
-          <h5>Dockerfile</h5>
-          <code>FROM busybox<br>CMD echo "I created my first custom image"</code>
         </ol>
         <p>If you finished all the exercises before the time is up, you should either
         help others or improve your skills with what you learned so far.</p>
 
         <!-- Second part of the workshop -->
         <h2 id="Development">Development</h2>
+        <p>Here comes the biggest part, we will be working on Dockerfile and Docker-Compose
+        until 15:00. Don't worry it won't be all theory, on the contrary the goal for this
+        part being for you to create your own development environment.</p>
         <h3 id="DockerfileDev">Dockerfile: part two</h3>
         <p>Now that you are a little more experienced with Dockerfile we will sink
         deeper into the rabbit hole. You can tweaks a lot of things with the help of
         the Docker syntax, the files you want to use, the port on which your container
         is listening, etc ... So during this part we will explore some of these
         advance features by first looking at an example:</p>
-        <pre><code></code></pre>
-        <p></p>
+        <pre><code>
+          FROM python:latest
+
+          WORKDIR /Dockerfile
+          ADD . /Dockerfile
+          RUN pip install -r requirements.txt
+          EXPOSE 80
+          ENV NAME="Marvin"
+
+          CMD ["python", "app.py"]
+        </code></pre>
+        <p>In this example we use the latest python version, we then tell the
+        container that we want to work in the directory Dockerfile (for the next commands)
+        and mount the local directory Dockerfile inside the container. After which we run a
+        command to install dependencies, make the container listen on the port 80, create a 
+        variable of environment (NAME) and finally run the application.</p>
+        <p>By itself that might not seems like much, but you must realise that with
+        this dockerfile you create an environment allowing you to run a python and
+        use env variable. You can find all the files necessary to play with that example
+        <a href="https://github.com/Marvin-LOUIS/Docker-Workshop/tree/master/Development/Dockerfile">
+        here</a>.</p>
+        <p>The example above as shown you a couple of new features, to help you in your
+        exercises here is a table showing them to you with a small description.</p>
         <table>
           <tr>
             <th><b>Dockerfile element</b></th>
@@ -210,38 +223,38 @@
           </tr>
           <tr>
             <td><i>FROM</i></td>
-            <td></td>
+            <td>Initialize the build by choosing a base image</td>
           </tr>
           <tr>
             <td><i>RUN</i></td>
-            <td></td>
+            <td>Execute a command as a new layer in the image, during it's creation</td>
           </tr>
           <tr>
             <td><i>CMD</i></td>
-            <td></td>
+            <td>Execute a command or set a default, there can be only one CMD per Dockerfile</td>
           </tr>
           <tr>
             <td><i>WORKDIR</i></td>
-            <td></td>
+            <td>Sets the working directory for the other instructions</td>
           </tr>
           <tr>
             <td><i>ADD</i></td>
-            <td></td>
+            <td>Mount files from the host to the filesystem of the container</td>
           </tr>
           <tr>
             <td><i>EXPOSE</i></td>
-            <td></td>
+            <td>Tell Docker that the container is listening on the specified port</td>
           </tr>
         </table>
-        <p>As always you can go further so, for more info a link to some documentation on 
+        <p>As always you can go further and discover how much more powerful you
+        can get!!!! For more info a link to some documentation on 
         <a href="https://docs.docker.com/engine/reference/builder">Dockerfile</a>.</p>
         <h4 id="ExoDockerfile">Exercises</h4>
         <ol>
-          <li><p></p></li>
-          <li><p></p></li>
-          <li><p></p></li>
-          <li><p></p></li>
-          <li><p></p></li>
+          <li><p>Create a Dockerfile based on php and make it execute a php server
+          (the native server to php)</p></li>
+          <li><p>Use that container to create a php application and run it</p></li>
+          <li><p>Modify you Dockerfile and install laravel on it</p></li>
         </ol>
         <h3 id="DockerCompose">Docker-Compose</h3>
         <p>Dockerfile are a very handy tool but that doesn't help you a lot when
@@ -250,11 +263,62 @@
         modification and management.</p>
         <p>In that optic, we shall learn about Docker-compose, a tool created to put
         in relation multiple container by building them through a special configuration
-        file. You will soon come to realise that a big part of the things you did in
-        your Dockerfile will be done into a Dockercompose file now, but that in no way
+        file (written in yaml) You will soon come to realise that a big part of the things
+        you did in your Dockerfile will be done into a Dockercompose file now, but that in no way
         means you are done with them. For a better understanding, here comes an example:</p>
-        <pre><code></code></pre>
-        <p></p>
+        <pre><code>
+          version: '3'
+
+          volumes:
+            database_data:
+              driver: local
+
+          services:
+
+            nginx:
+              image: nginx:latest
+              ports:
+                - 8080:80
+              volumes:
+                - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+            php:
+              build: ./php/
+              expose:
+                - 9000
+              volumes:
+                - .:/var/www/html
+
+            mysql:
+                image: mysql:latest
+                expose:
+                    - 3306
+                  volumes:
+                    - database_data:/var/lib/mysql
+                  environment:
+                    MYSQL_ROOT_PASSWORD: secret
+                    MYSQL_DATABASE: project
+                    MYSQL_USER: project
+                    MYSQL_PASSWORD: project
+          </code></pre>
+        <p>This example might be long and seem complex but all it does is, instancing
+        the version for the Docker-compose syntax, define the volumes and setup the
+        services.</p>
+        <p>The first service used is nginx, for the server side, we tell it that we
+        want the last version of nginx, we also ask the service to listen to the port 80,
+        to be linked to the host on the port 8080 and finally to load the configuration
+        file (stored locally) to it's rightful place inside the container.</p>
+        <p>Then comes the php service which create a custon image build based on a Dockefile
+        stored locally, then we ask it to listen to the port 9000 and load and file in the
+        current directory of the host to the location "/var/www/html"</p>
+        <p>Finally, we have the mysql service, we first ask it to use the last image possible
+        then to listen to the port 3306, mount the database and we finish by setting up
+        environment variables.</p>
+        <p>Ones again this file is part of bigger example, if you want to see it click 
+        <a href="https://github.com/Marvin-LOUIS/Docker-Workshop/tree/master/Development/Docker-Compose">
+        here</a>.</p>
+        <p>As all this might be a little to much to take in one shot, here is a table
+        summarizing it with a small description.</p>
         <table>
           <tr>
             <th><b>Docker-compose element</b></th>
@@ -262,63 +326,75 @@
           </tr>
           <tr>
             <td><i>version</i></td>
-            <td></td>
+            <td>Sets the version for the Docker-compose syntax</td>
           </tr>
           <tr>
             <td><i>volumes</i></td>
-            <td></td>
+            <td>Mount host path or named volumes</td>
           </tr>
           <tr>
             <td><i>services</i></td>
-            <td></td>
+            <td>Sets the different container of the application, as sub-options</td>
           </tr>
           <tr>
             <td><i>image</i></td>
-            <td></td>
+            <td>Tell Docker-compose to use the said image to build the container</td>
           </tr>
           <tr>
             <td><i>ports</i></td>
-            <td></td>
+            <td>Link the host and the container port</td>
           </tr>
           <tr>
             <td><i>expose</i></td>
-            <td></td>
+            <td>Tell the container to listen on the said port</td>
           </tr>
         </table>
         <p>For more info a link to some documentation on 
         <a href="https://docs.docker.com/compose/compose-file/">Docker-Compose</a>.</p>
         <h4 id="ExoDockerCompose">Exercises</h4>
         <ol>
-          <li><p></p></li>
-          <li><p></p></li>
-          <li><p></p></li>
-          <li><p></p></li>
-          <li><p></p></li>
+          <li><p>Create a Docker-compose with php, apache and mysql</p></li>
+          <li><p>Develop a small app to test the services</p></li>
+          <li><p>Replace apache by httpd</p></li>
         </ol>
+        <p>Ones you are finished you should start creating your custom development environment
+        and if you're so quick that it's also finished before the end of this part, then share
+        your wisdom to your neighbors.</p>
 
         <!-- Third part of the workshop -->
         <h2 id="Deployment">Deployment</h2>
         <p>There are many ways to deploy an application that as been developed with
-        a Docker environment, but we will only see two of them here. The goal being
-        to understand how easy it makes deployment process to have the same environment
+        a Docker environment, but we will only see one of them here. The goal being
+        to understand how easy it makes the deployment process to have the same environment
         to develop and deploy.</p>
         <h3 id="Deploy">Deploy</h3>
         <h4 id="Servers">Servers</h4>
-        <p>To deploy on a server or local machine manually you must install Docker
-        and run the application as you would on your local machine.</p>
-        <h4 id="Services">Services</h4>
-        <p>To deploy with a service such as Heroku you must simply feed it your
-        images.</p>
+        <p>To deploy on a server or local machine you must install Docker, build your
+        image and run the application as you would on your local machine.</p>
+        <pre><code>docker build -t myimage .<br>docker run myimage</code></pre>
+        <p>It's a very easy process, but tedious as you must do everything manually. A
+        solution could be to create a small script automating the ordeal, but it wouldn't
+        be compatible on every operating system.</p>
+        <p>You could also put your image on a dockerhub repository and simply pull and
+        run it whenever necessary. If you put the Dockerfile on a Github repository you
+        will of course have to pull it with git.</p>
+        <pre><code>docker pull myimage<br>docker run myimage</code></pre>
+        <p>If you have enough time you should try to automate the process, use any
+        technology, as long as it makes everything simpler.</p>
         <h3 id="ExoDeploy">Exercises</h3>
         <ol>
-          <li><p></p></li>
-          <li><p></p></li>
-          <li><p></p></li>
-          <li><p></p></li>
-          <li><p></p></li>
+          <li><p>Develop an application with the environment you created yourself 
+          during the last part</p></li>
+          <li><p>Deploy your application on the machine of one your neighbors</p></li>
         </ol>
+        <p>Your used to it know if you're so quick that you put me to shame then help
+        you friends, or go search the web for more information.</p>
 
         <h2 id="Conclu">Conclusion</h2>
+        <p>Here we are the workshop is finished, I hope you enjoyed and learned a lot
+        during our time together. After all, we learned enough of Docker today for you
+        to know if you want to spend more time using it or not. Now would probably be
+        a good time for a little debrief.</p>
       </div>
     </section>
   </body>
